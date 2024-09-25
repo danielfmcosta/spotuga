@@ -1,0 +1,446 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: "border-box";
+    font-family: "Inter", sans-serif;
+}
+  
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+  
+html {
+  background-image: linear-gradient(to bottom right, #3f7ec6, #463ba6, #5E239D);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+  
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+  
+#app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  height: 130px;
+  margin-bottom: 20px;
+}
+
+// .wobble{
+//   position: absolute;
+//   z-index: -1000;
+//   width: 100vw;
+//   height: 200px;
+//   margin-top:-100px;
+// }
+
+.homeButton {
+  background:url('image.ico') center center / cover no-repeat;
+  height: 90px;
+  width: 90px;
+  margin: 15px 30px;
+}
+
+.infoButton {
+  margin-top: 35px;
+  margin-right: 20px;
+  height: 35px;
+  width: 32px;
+  float: right;
+}
+
+.volumeControl {
+  position: relative;
+  float: right;
+  margin-top: 35px;
+  margin-right: 10px;
+  height: 35px;
+  width: 160px;
+}
+
+.volumeButton{
+  height: 35px;
+  width: 32px;
+  z-index: 2; 
+  position: absolute; 
+  right: 0; 
+}
+
+.volumeSlider {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  height: 35px;
+  width: 150px;
+  overflow: hidden;
+  border-radius: 50px;
+  input {
+    width: 50%;
+    margin-left: 10px;
+    direction: rtl;
+    z-index: 1;
+  }
+}
+
+.slider-expand-enter-active,
+.slider-expand-leave-active {
+  transition: width 0.5s ease;
+}
+
+.slider-expand-enter-from,
+.slider-expand-leave-to {
+  width: 30px;
+}
+
+.slider-expand-enter-to,
+.slider-expand-leave-from {
+  width: 150px; 
+}
+
+.answer {
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -48%);
+  height: 500px;
+  width: 400px;
+  background-color: rgba(70, 70, 70, 0.562);
+  border-radius: 15px;
+  color: white;
+  box-shadow: 3px 3px 15px 5px rgba(0, 0, 0, 0.5);
+  button {
+    margin-top: -28px;
+    margin-right: 5px;
+    height: 30px;
+    width: 30px;
+    float: right;
+    position: relative;
+    i{
+      font-size:22px;
+      font-weight: bold;
+    }
+  }
+  .rightOrWrong {
+    margin-top: 10px;
+    font-size: 22px;
+    font-weight: bolder;
+    justify-content: center;
+    display: flex;
+  }
+  .answer-img {
+    margin-top: 15px;
+    margin-left: 50px;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.25);
+  }
+  .artistOfTheDayName{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+    display: flex;
+    font-size: 35px;
+    font-weight: bolder;
+  }
+  .countdown{
+    justify-content: center;
+    margin-bottom: 2px;
+    display: flex;
+    font-size: normal;
+    font-weight: bold;
+  }
+}
+
+.show-answer-enter-active, .show-answer-leave-active {
+  transition: opacity 1s; /* Slows down transition */
+}
+
+.show-answer-enter, .show-answer-leave-to {
+  opacity: 0; /* Starting state (when entering) and ending state (when leaving) */
+}
+
+.show-answer-enter-to, .show-answer-leave {
+  opacity: 1; /* Final state (when entering) and starting state (when leaving) */
+}
+
+.fuzzy {
+  filter: blur(4px);
+  transition: filter 0.5s;
+}
+
+.fuzzy.fade {
+  filter: none;
+}
+
+.centerConsole {
+  width: 400px;
+  margin: auto;
+
+  transition: filter 0.3s ease;
+
+  .counter {
+    color: white;
+    margin-right: 25px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 13px;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    width: 360px;
+
+    .search-input {
+      position: sticky;
+      background-color: #23232300;
+      margin-left: 10px;
+      flex:1;
+      width: 355px;
+    }
+
+    .search-emoji {
+      margin: 0px;
+      background-color: #fff;
+    }
+  }
+  .autocomplete {
+    position:relative;
+    background-color: #ffffffc1;
+    color: #020309ce;
+    font-weight: 500;
+    font-size: 16px;
+    width: 350px;
+    margin-left: 16px;
+    margin-top: 5px;
+    border-radius: 7px;
+    padding: 10px;
+    z-index: 99;
+    .autocomplete-item{
+      cursor: pointer;
+      :hover{
+        background-color: #606060b6;
+      }
+    }
+  }
+}
+
+.example {
+  position: fixed;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 150px;
+  color: white;
+  p{
+    text-align: center;
+    word-wrap: break-word;
+    font-size: large;
+    font-weight: 500;
+    a{
+      color: inherit;
+    }
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .homeButton {
+    background:url('image.ico') center center / cover no-repeat;
+    height: 85px;
+    width: 85px;
+    margin: 15px 15px;
+  }
+
+  .volumeControl {
+    position: relative;
+    float: right;
+    margin-top: 35px;
+    margin-right: 10px;
+    height: 35px;
+    width: 130px;
+  }
+  
+  .volumeButton{
+    height: 35px;
+    width: 32px;
+    z-index: 2; 
+    position: absolute; 
+    right: 0; 
+  }
+  
+  .volumeSlider {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    height: 35px;
+    width: 120px;
+    overflow: hidden;
+    border-radius: 50px;
+    input {
+      width: 35%;
+      margin-left: 10px;
+      direction: rtl;
+      z-index: 1;
+    }
+  }
+  
+  .slider-expand-enter-active,
+  .slider-expand-leave-active {
+    transition: width 0.5s ease;
+  }
+  
+  .slider-expand-enter-from,
+  .slider-expand-leave-to {
+    width: 30px;
+  }
+  
+  .slider-expand-enter-to,
+  .slider-expand-leave-from {
+    width: 120px; 
+  }
+  
+
+  .header {
+    height: 145px;
+  }
+
+  .centerConsole {
+    width: 320px;
+    margin: auto;
+
+    .counter {
+      color: white;
+      margin-right: 25px;
+      margin-bottom: 3px;
+      display: flex;
+      justify-content: flex-end;
+      font-size: 11px;
+    }
+
+    
+    .search-container {
+      position:sticky;
+      display: flex;
+      align-items: center;
+      width: 130px;
+      .search-input {
+        background-color: #23232300;
+        margin-left: 10px;
+        flex:1;
+        width: 275px;
+        input{
+          font-size: 12px;
+          width: 267px;
+          height: 20px;
+      
+        }
+      }
+      .search-emoji {
+        margin: 0px;
+      }
+    }
+    
+    .autocomplete {
+      width: 270px;
+      margin-left: 14px;
+    }
+
+    .example {
+      width: 100%;
+      margin-top: 50px;
+      color: white;
+
+      p{
+        text-align: center;
+        word-wrap: break-word;
+        font-size: medium;
+        font-weight: 500;
+        a{
+          color: inherit;
+        }
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .answer {
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -48%);
+    height: 440px;
+    width: 340px;
+    background-color: rgba(70, 70, 70, 0.562);
+    border-radius: 15px;
+    color: white;
+    box-shadow: 3px 3px 15px 5px rgba(0, 0, 0, 0.5);
+    button {
+      margin-top: -28px;
+      margin-right: 5px;
+      height: 30px;
+      width: 30px;
+      float: right;
+      position: relative;
+      i{
+        font-size:22px;
+        font-weight: bold;
+      }
+    }
+    .rightOrWrong {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bolder;
+      justify-content: center;
+      display: flex;
+    }
+    .answer-img {
+      margin-top: 15px;
+      margin-left: 45px;
+      height: 250px;
+      width: 250px;
+      border-radius: 50%;
+      box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.25);
+    }
+    .artistOfTheDayName{
+      margin-top: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+      display: flex;
+      font-size: 35px;
+      font-weight: bolder;
+    }
+    .countdown{
+      justify-content: center;
+      margin-bottom: 2px;
+      display: flex;
+      font-size: normal;
+      font-weight: bold;
+    }
+  }
+
+}
