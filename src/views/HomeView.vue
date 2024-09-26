@@ -148,8 +148,8 @@ export default {
   },
   data() {
     return {
-      CLIENT_SECRET: import.meta.env.VITE_CLIENT_SECRET,
-      CLIENT_ID: import.meta.env.VITE_CLIENT_ID,
+      clientSecret: import.meta.env.VITE_CLIENT_SECRET,
+      clientId: import.meta.env.VITE_CLIENT_ID,
 
       timeUntilMidnight: '',
 
@@ -641,7 +641,7 @@ export default {
     async fetchAccessToken() { // holds the access token for the expiry duration 
       if (!this.accessToken || (this.tokenExpiry && Date.now() > this.tokenExpiry)) {
         try {
-          const encodedCredentials = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
+          const encodedCredentials = btoa(`${this.clientId}:${this.clientSecret}`);
 
           const response = await axios.post('https://accounts.spotify.com/api/token', null, {
             params: {
