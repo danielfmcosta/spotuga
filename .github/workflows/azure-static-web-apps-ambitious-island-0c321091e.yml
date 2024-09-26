@@ -14,25 +14,19 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE20: true
-
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
           lfs: false
           persist-credentials: false
-
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'  # Specify Node.js 20 here
-
+          node-version: '20'
       - name: Clean Git Config
         run: |
           git config --global --unset-all http.https://github.com/.extraheader || true
-
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
