@@ -133,7 +133,7 @@ import UiCard from '@/components/UiCard.vue';
 import UiInput from '@/components/UiInput.vue';
 
 import axios from 'axios';
-import { CLIENT_SECRET, CLIENT_ID} from '../../config';
+//import { CLIENT_SECRET, CLIENT_ID} from '../../config';
 // import { lineWobble } from 'ldrs'
 
 // lineWobble.register()
@@ -148,6 +148,9 @@ export default {
   },
   data() {
     return {
+      CLIENT_SECRET: import.meta.env.VITE_CLIENT_SECRET,
+      CLIENT_ID: import.meta.env.VITE_CLIENT_ID,
+
       timeUntilMidnight: '',
 
       showAnswer: true,
